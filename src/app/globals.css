@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* Palette and type taken from the Arcsphere Studio template:
+   warm cream canvas, umber ink, sand footer card. */
+:root {
+  --cream: #f0ebe6;
+  --sand: #e2dacf;
+  --ink: #4f4742;
+  --ink-deep: #453e3a;
+  --chip: #ddd6cf;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
+  --color-ink-deep: var(--ink-deep);
+  --color-chip: var(--chip);
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Small-phone breakpoint (iPhone 12–15 and up); below it is SE / 320–375. */
+  --breakpoint-xs: 24.375rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Safety net only — real overflow is fixed at the source. Desktop side
+     slide-ins start off-canvas; clip (not hidden) keeps sticky working. */
+  overflow-x: clip;
+  /* Long words and URLs wrap instead of pushing the layout wider. */
+  overflow-wrap: break-word;
+}
+
+:where(img, video, canvas, svg, iframe) {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+@layer components {
+  /* Section headline: uppercase Inter Display medium, tight tracking.
+     28–32px on phones, then the desktop scale from tablets up. */
+  .heading-section {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    font-size: clamp(1.75rem, 1.35rem + 1.6vw, 2rem);
+  }
+  @media (min-width: 768px) {
+    .heading-section {
+      font-size: clamp(2.25rem, 1.4rem + 2.6vw, 3.5rem);
+    }
+  }
+
+  .eyebrow {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.6;
+    font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1.0625rem);
+  }
+
+  /* 13px on phones and tablets for legibility; desktop keeps 12px. */
+  .label {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+  @media (min-width: 1024px) {
+    .label {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}

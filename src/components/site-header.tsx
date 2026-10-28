@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { nav, primaryCta, studio, whatsappHref } from "@/content/site";
+import { Logo } from "./logo";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -43,19 +44,18 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label={`${studio.name} — home`}
-          className="flex min-h-12 min-w-0 items-center truncate text-[20px] tracking-[-0.04em] xs:text-[22px] min-[1100px]:absolute min-[1100px]:left-1/2 min-[1100px]:-translate-x-1/2 min-[1100px]:text-2xl"
+          className="flex min-h-12 shrink-0 items-center min-[1100px]:absolute min-[1100px]:left-1/2 min-[1100px]:-translate-x-1/2"
         >
-          Moori Interiors
+          <Logo preload className="w-[68px] xs:w-[74px] min-[1100px]:w-[96px]" />
         </Link>
 
         <div className="flex shrink-0 items-center gap-1 xs:gap-2">
-          {/* Always visible — never hidden behind the mobile menu (CRO audit H1) */}
+          {/* Desktop only; below 1100px the menu drawer carries the CTA */}
           <Link
             href={primaryCta.href}
-            className="inline-flex h-11 items-center rounded-full bg-ink px-4 text-[14px] font-medium uppercase tracking-[-0.02em] text-cream transition-colors duration-300 hover:bg-ink-deep min-[1100px]:h-9 min-[1100px]:text-sm"
+            className="hidden h-9 items-center rounded-full bg-ink px-4 text-sm font-medium uppercase tracking-[-0.02em] text-cream transition-colors duration-300 hover:bg-ink-deep min-[1100px]:inline-flex"
           >
-            <span className="min-[1100px]:hidden">Book</span>
-            <span className="hidden min-[1100px]:inline">Book a consultation</span>
+            Book a consultation
           </Link>
           <button
             type="button"

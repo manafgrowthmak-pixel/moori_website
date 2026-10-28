@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { footerColumns, primaryCta, studio, whatsappHref } from "@/content/site";
 import { FooterWordmark } from "./footer-wordmark";
+import { Logo } from "./logo";
 import { Reveal } from "./reveal";
 import { Hairline, PillLink } from "./ui";
 
@@ -21,6 +22,9 @@ export function SiteFooter() {
         <div className="mx-auto max-w-[1440px] px-4 pt-14 xs:px-5 sm:px-10 md:pt-20 lg:pt-28">
           <div className="grid grid-cols-4 gap-x-4 gap-y-10 md:grid-cols-12 md:gap-y-14 [&>*]:min-w-0">
             <div className="col-span-4 md:col-span-12 xl:col-span-5">
+              <Link href="/" aria-label={`${studio.name} — home`} className="mb-8 inline-flex md:mb-10">
+                <Logo className="w-[112px] md:w-[136px]" />
+              </Link>
               <p data-split className="max-w-[540px] text-[clamp(1.5rem,1.2rem+1.4vw,1.75rem)] leading-[1.15] text-balance md:text-[clamp(1.75rem,1.2rem+1.8vw,2.5rem)] font-medium uppercase tracking-[-0.04em]">
                 Homes designed with you, across Dubai and the UAE.
               </p>

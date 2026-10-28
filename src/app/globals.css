@@ -27,6 +27,9 @@ html {
   scroll-padding-top: 88px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Desktop side slide-ins start just past the edge; clip at the root too so
+     the page never gains a sideways scroll before they play. */
+  overflow-x: clip;
 }
 
 html,
